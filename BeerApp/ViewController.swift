@@ -19,9 +19,10 @@ class ViewController: UIViewController {
         return label
     }()
     
-    let searchBar : UISearchBar = {
+    lazy var searchBar : UISearchBar = {
         let search = UISearchBar()
         search.translatesAutoresizingMaskIntoConstraints = false
+        search.delegate = self
         search.placeholder = "Search"
         search.barTintColor = .clear
         search.searchTextField.textColor = .white
@@ -50,9 +51,8 @@ class ViewController: UIViewController {
     }()
     
     var isFetching = false
-    
+    var isSearchMode = false
     var page: Int = 1
-    
     var beersModel : [BeerModel] = []
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -70,7 +70,7 @@ class ViewController: UIViewController {
         view.backgroundColor = .black
         
         view.addSubview(titleLabel)
-        titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 25).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 25).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4).isActive = true
         
@@ -104,6 +104,9 @@ class ViewController: UIViewController {
         
         isFetching = true
         self.page = page
+        if page == 1 {
+            beersModel.removeAll()
+        }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else { return }
@@ -147,10 +150,56 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.section == tableView.numberOfSections - 1 &&
             indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
-            if isFetching == false {
+            if isFetching == false && isSearchMode == false {
                 fetchBeers(page: page+1)
             }
         }
+    }
+}
+
+extension ViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        isSearchMode = true
+        searchForBeer(with: searchBar.text)
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == ""{
+            isSearchMode = false
+            fetchBeers(page: 1)
+        }
+    }
+    
+    private func searchForBeer(with name: String?) {
+        guard name != nil else { return }
+        guard let url = URL(string: "https://api.punkapi.com/v2/beers?beer_name=\(name!)") else { return }
+        
+        
+        beersModel.removeAll()
+        isFetching = true
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            var beers: [BeerModel]?
+            
+            do{
+                beers = try  JSONDecoder().decode([BeerModel].self, from: data)
+                self.isFetching = false
+            }
+            catch{
+                print("failed to convert \(error)")
+                self.isFetching = false
+            }
+            guard beers != nil else { return }
+            self.beersModel.append(contentsOf: beers!)
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
+        }.resume()
     }
 }
 
