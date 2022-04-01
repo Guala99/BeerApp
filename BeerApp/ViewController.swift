@@ -29,15 +29,33 @@ class ViewController: UIViewController {
     
     let offerView = OffersView()
     
+    let typeBeerView : UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemPink
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var tableView : UITableView = {
+        let tableView = UITableView(frame: .zero)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        return tableView
+    }()
+    
+    var beersModel : [BeerModel] = []
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        fetchBeers()
     }
-
+    
     fileprivate func setUpUI() {
         
         view.backgroundColor = .black
@@ -57,8 +75,54 @@ class ViewController: UIViewController {
         offerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
         offerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
         offerView.heightAnchor.constraint(equalToConstant: 80).isActive = true
-    
+        
+        view.addSubview(typeBeerView)
+        typeBeerView.topAnchor.constraint(equalTo: offerView.bottomAnchor, constant: 5).isActive = true
+        typeBeerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        typeBeerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        typeBeerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        view.addSubview(tableView)
+        tableView.topAnchor.constraint(equalTo: typeBeerView.bottomAnchor, constant: 5).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
     }
+    
+    private func fetchBeers(){
+        guard let url = URL(string: "https://api.punkapi.com/v2/beers") else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            var beers: [BeerModel]?
+            
+            do{
+                beers = try  JSONDecoder().decode([BeerModel].self, from: data)
+            }
+            catch{
+                print("failed to convert \(error)")
+            }
+            guard beers != nil else { return }
+            self.beersModel = beers!
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }.resume()
+    }
+    
+}
 
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return beersModel.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.backgroundColor = .clear
+        return cell
+    }
+    
 }
 
