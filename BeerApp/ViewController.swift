@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         search.translatesAutoresizingMaskIntoConstraints = false
         search.placeholder = "Search"
         search.barTintColor = .clear
+        search.searchTextField.textColor = .white
         return search
     }()
     
@@ -48,6 +49,10 @@ class ViewController: UIViewController {
         return tableView
     }()
     
+    var isFetching = false
+    
+    var page: Int = 1
+    
     var beersModel : [BeerModel] = []
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -57,7 +62,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-        fetchBeers()
+        fetchBeers(page: page)
     }
     
     fileprivate func setUpUI() {
@@ -94,8 +99,11 @@ class ViewController: UIViewController {
         
     }
     
-    private func fetchBeers(){
-        guard let url = URL(string: "https://api.punkapi.com/v2/beers") else { return }
+    private func fetchBeers(page: Int){
+        guard let url = URL(string: "https://api.punkapi.com/v2/beers?page=\(page)") else { return }
+        
+        isFetching = true
+        self.page = page
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else { return }
@@ -103,15 +111,19 @@ class ViewController: UIViewController {
             
             do{
                 beers = try  JSONDecoder().decode([BeerModel].self, from: data)
+                self.isFetching = false
             }
             catch{
                 print("failed to convert \(error)")
+                self.isFetching = false
             }
             guard beers != nil else { return }
-            self.beersModel = beers!
+            self.beersModel.append(contentsOf: beers!)
+            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
+            
         }.resume()
     }
     
@@ -132,5 +144,13 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         return 100
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.section == tableView.numberOfSections - 1 &&
+            indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
+            if isFetching == false {
+                fetchBeers(page: page+1)
+            }
+        }
+    }
 }
 
