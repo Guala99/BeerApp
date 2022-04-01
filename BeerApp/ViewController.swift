@@ -111,14 +111,12 @@ class ViewController: UIViewController {
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else { return }
             var beers: [BeerModel]?
-            
+            self.isFetching = false
             do{
                 beers = try  JSONDecoder().decode([BeerModel].self, from: data)
-                self.isFetching = false
             }
             catch{
                 print("failed to convert \(error)")
-                self.isFetching = false
             }
             guard beers != nil else { return }
             self.beersModel.append(contentsOf: beers!)
@@ -183,14 +181,12 @@ extension ViewController: UISearchBarDelegate {
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else { return }
             var beers: [BeerModel]?
-            
+            self.isFetching = false
             do{
                 beers = try  JSONDecoder().decode([BeerModel].self, from: data)
-                self.isFetching = false
             }
             catch{
                 print("failed to convert \(error)")
-                self.isFetching = false
             }
             guard beers != nil else { return }
             self.beersModel.append(contentsOf: beers!)
