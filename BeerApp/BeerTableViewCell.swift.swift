@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol BeerTableViewCellDelegate: AnyObject {
+    func moreInfoTapped(with model: BeerModel)
+}
+
 class BeerTableViewCell: UITableViewCell {
     
     let beerImageView : UIImageView = {
@@ -45,7 +49,7 @@ class BeerTableViewCell: UITableViewCell {
     }()
     
     let moreButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("MORE INFO", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .regular)
@@ -55,6 +59,8 @@ class BeerTableViewCell: UITableViewCell {
     }()
     
     var model: BeerModel?
+    
+    weak var delegate: BeerTableViewCellDelegate?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -69,31 +75,31 @@ class BeerTableViewCell: UITableViewCell {
     private func setUpUI() {
         backgroundColor = .clear
         
-        addSubview(beerImageView)
+        contentView.addSubview(beerImageView)
         beerImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.85).isActive = true
         beerImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         beerImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         beerImageView.widthAnchor.constraint(equalTo: heightAnchor, multiplier: 0.35).isActive = true
         
-        addSubview(titleLabel)
+        contentView.addSubview(titleLabel)
         titleLabel.topAnchor.constraint(equalTo: beerImageView.topAnchor).isActive = true
         titleLabel.heightAnchor.constraint(equalTo: beerImageView.heightAnchor, multiplier: 0.2).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: beerImageView.trailingAnchor, constant: 10).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
-        addSubview(taglineLabel)
+        contentView.addSubview(taglineLabel)
         taglineLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
         taglineLabel.heightAnchor.constraint(equalTo: beerImageView.heightAnchor, multiplier: 0.2).isActive = true
         taglineLabel.leadingAnchor.constraint(equalTo: beerImageView.trailingAnchor, constant: 10).isActive = true
         taglineLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
-        addSubview(descriptionLabel)
+        contentView.addSubview(descriptionLabel)
         descriptionLabel.topAnchor.constraint(equalTo: taglineLabel.bottomAnchor).isActive = true
         descriptionLabel.heightAnchor.constraint(equalTo: beerImageView.heightAnchor, multiplier: 0.5).isActive = true
         descriptionLabel.leadingAnchor.constraint(equalTo: beerImageView.trailingAnchor, constant: 10).isActive = true
         descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
-        addSubview(moreButton)
+        contentView.addSubview(moreButton)
         moreButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor).isActive = true
         moreButton.heightAnchor.constraint(equalTo: beerImageView.heightAnchor, multiplier: 0.1).isActive = true
         moreButton.leadingAnchor.constraint(equalTo: beerImageView.trailingAnchor, constant: 10).isActive = true
@@ -101,6 +107,7 @@ class BeerTableViewCell: UITableViewCell {
     }
     
     func configureCellWith(model: BeerModel) {
+        self.model = model
         beerImageView.setUpImageView(with: model.image_url)
         titleLabel.text = model.name
         taglineLabel.text = model.tagline
@@ -108,7 +115,8 @@ class BeerTableViewCell: UITableViewCell {
     }
     
     @objc private func handleMoreTapped() {
-        print(model)
+        guard model != nil else { return }
+        self.delegate?.moreInfoTapped(with: model!)
     }
 }
 
