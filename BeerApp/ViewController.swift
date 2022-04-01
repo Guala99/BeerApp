@@ -36,9 +36,13 @@ class ViewController: UIViewController {
         return view
     }()
     
+    let beerCellidentifier = "beerIdentifier"
+    
     lazy var tableView : UITableView = {
         let tableView = UITableView(frame: .zero)
+        tableView.backgroundColor = .clear
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(BeerTableViewCell.self, forCellReuseIdentifier: beerCellidentifier)
         tableView.delegate = self
         tableView.dataSource = self
         return tableView
@@ -119,9 +123,13 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.backgroundColor = .clear
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: beerCellidentifier) as? BeerTableViewCell else { return UITableViewCell()}
+        cell.configureCellWith(model: beersModel[indexPath.item])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     
 }
