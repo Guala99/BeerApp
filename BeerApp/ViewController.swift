@@ -27,6 +27,8 @@ class ViewController: UIViewController {
         return search
     }()
     
+    let offerView = OffersView()
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -40,15 +42,22 @@ class ViewController: UIViewController {
         
         view.backgroundColor = .black
         
-        self.view.addSubview(titleLabel)
+        view.addSubview(titleLabel)
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 25).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4).isActive = true
         
-        self.view.addSubview(searchBar)
+        view.addSubview(searchBar)
         searchBar.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
         searchBar.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         searchBar.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        
+        view.addSubview(offerView)
+        offerView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 5).isActive = true
+        offerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
+        offerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
+        offerView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+    
     }
 
 }
