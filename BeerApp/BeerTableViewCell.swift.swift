@@ -9,8 +9,6 @@ import UIKit
 
 class BeerTableViewCell: UITableViewCell {
     
-    var model: BeerModel?
-    
     let beerImageView : UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -52,8 +50,11 @@ class BeerTableViewCell: UITableViewCell {
         button.setTitle("MORE INFO", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         button.setTitleColor(.orange, for: .normal)
+        button.addTarget(self, action: #selector(handleMoreTapped), for: .touchUpInside)
         return button
     }()
+    
+    var model: BeerModel?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -104,10 +105,11 @@ class BeerTableViewCell: UITableViewCell {
         titleLabel.text = model.name
         taglineLabel.text = model.tagline
         descriptionLabel.text = model.description
-        
     }
     
-    
+    @objc private func handleMoreTapped() {
+        print(model)
+    }
 }
 
 extension UIImageView {
