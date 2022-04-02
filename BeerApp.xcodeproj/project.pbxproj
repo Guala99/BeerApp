@@ -20,7 +20,7 @@
 		235F4AF227F7646400CBF5CE /* OffersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F4AF127F7646400CBF5CE /* OffersView.swift */; };
 		235F4AF427F795FD00CBF5CE /* BeerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F4AF327F795FD00CBF5CE /* BeerModel.swift */; };
 		235F4AF627F79D3C00CBF5CE /* BeerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F4AF527F79D3C00CBF5CE /* BeerTableViewCell.swift */; };
-		235F4AF827F8C53C00CBF5CE /* DetailBeerViewController.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F4AF727F8C53C00CBF5CE /* DetailBeerViewController.swift.swift */; };
+		235F4AF827F8C53C00CBF5CE /* DetailBeerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F4AF727F8C53C00CBF5CE /* DetailBeerViewController.swift */; };
 		235F4AFA27F8F5D800CBF5CE /* DetailViewSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F4AF927F8F5D800CBF5CE /* DetailViewSlider.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +59,7 @@
 		235F4AF127F7646400CBF5CE /* OffersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersView.swift; sourceTree = "<group>"; };
 		235F4AF327F795FD00CBF5CE /* BeerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerModel.swift; sourceTree = "<group>"; };
 		235F4AF527F79D3C00CBF5CE /* BeerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewCell.swift; sourceTree = "<group>"; };
-		235F4AF727F8C53C00CBF5CE /* DetailBeerViewController.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBeerViewController.swift.swift; sourceTree = "<group>"; };
+		235F4AF727F8C53C00CBF5CE /* DetailBeerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBeerViewController.swift; sourceTree = "<group>"; };
 		235F4AF927F8F5D800CBF5CE /* DetailViewSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,7 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				235F4AC227F75FBE00CBF5CE /* ViewController.swift */,
-				235F4AF727F8C53C00CBF5CE /* DetailBeerViewController.swift.swift */,
+				235F4AF727F8C53C00CBF5CE /* DetailBeerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -303,7 +303,7 @@
 				235F4AC327F75FBE00CBF5CE /* ViewController.swift in Sources */,
 				235F4AFA27F8F5D800CBF5CE /* DetailViewSlider.swift in Sources */,
 				235F4AF427F795FD00CBF5CE /* BeerModel.swift in Sources */,
-				235F4AF827F8C53C00CBF5CE /* DetailBeerViewController.swift.swift in Sources */,
+				235F4AF827F8C53C00CBF5CE /* DetailBeerViewController.swift in Sources */,
 				235F4AF227F7646400CBF5CE /* OffersView.swift in Sources */,
 				235F4AF627F79D3C00CBF5CE /* BeerTableViewCell.swift in Sources */,
 				235F4ABF27F75FBE00CBF5CE /* AppDelegate.swift in Sources */,
