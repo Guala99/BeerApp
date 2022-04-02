@@ -207,6 +207,9 @@ extension ViewController: UISearchBarDelegate {
 
 extension ViewController: BeerTableViewCellDelegate {
     func moreInfoTapped(with model: BeerModel) {
-        print(model.name)
+        let detailVC = DetailBeerViewController()
+        detailVC.modalPresentationStyle = .overFullScreen
+        detailVC.detailSlider.model = model
+        self.present(detailVC, animated: false, completion: nil)
     }
 }

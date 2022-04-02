@@ -20,6 +20,8 @@
 		235F4AF227F7646400CBF5CE /* OffersView.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F4AF127F7646400CBF5CE /* OffersView.swift.swift */; };
 		235F4AF427F795FD00CBF5CE /* BeerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F4AF327F795FD00CBF5CE /* BeerModel.swift */; };
 		235F4AF627F79D3C00CBF5CE /* BeerTableViewCell.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F4AF527F79D3C00CBF5CE /* BeerTableViewCell.swift.swift */; };
+		235F4AF827F8C53C00CBF5CE /* DetailBeerViewController.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F4AF727F8C53C00CBF5CE /* DetailBeerViewController.swift.swift */; };
+		235F4AFA27F8F5D800CBF5CE /* DetailViewSlider.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F4AF927F8F5D800CBF5CE /* DetailViewSlider.swift.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		235F4AF127F7646400CBF5CE /* OffersView.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersView.swift.swift; sourceTree = "<group>"; };
 		235F4AF327F795FD00CBF5CE /* BeerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerModel.swift; sourceTree = "<group>"; };
 		235F4AF527F79D3C00CBF5CE /* BeerTableViewCell.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewCell.swift.swift; sourceTree = "<group>"; };
+		235F4AF727F8C53C00CBF5CE /* DetailBeerViewController.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBeerViewController.swift.swift; sourceTree = "<group>"; };
+		235F4AF927F8F5D800CBF5CE /* DetailViewSlider.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewSlider.swift.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +114,9 @@
 				235F4ABE27F75FBE00CBF5CE /* AppDelegate.swift */,
 				235F4AC027F75FBE00CBF5CE /* SceneDelegate.swift */,
 				235F4AC227F75FBE00CBF5CE /* ViewController.swift */,
+				235F4AF727F8C53C00CBF5CE /* DetailBeerViewController.swift.swift */,
 				235F4AF527F79D3C00CBF5CE /* BeerTableViewCell.swift.swift */,
+				235F4AF927F8F5D800CBF5CE /* DetailViewSlider.swift.swift */,
 				235F4AF327F795FD00CBF5CE /* BeerModel.swift */,
 				235F4AF127F7646400CBF5CE /* OffersView.swift.swift */,
 				235F4AC427F75FBE00CBF5CE /* Main.storyboard */,
@@ -271,7 +277,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				235F4AC327F75FBE00CBF5CE /* ViewController.swift in Sources */,
+				235F4AFA27F8F5D800CBF5CE /* DetailViewSlider.swift.swift in Sources */,
 				235F4AF427F795FD00CBF5CE /* BeerModel.swift in Sources */,
+				235F4AF827F8C53C00CBF5CE /* DetailBeerViewController.swift.swift in Sources */,
 				235F4AF227F7646400CBF5CE /* OffersView.swift.swift in Sources */,
 				235F4AF627F79D3C00CBF5CE /* BeerTableViewCell.swift.swift in Sources */,
 				235F4ABF27F75FBE00CBF5CE /* AppDelegate.swift in Sources */,
