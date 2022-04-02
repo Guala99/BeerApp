@@ -47,7 +47,7 @@ class BeerTableViewCell: UITableViewCell {
         return label
     }()
     
-    let moreButton: UIButton = {
+    lazy var moreButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("MORE INFO", for: .normal)
