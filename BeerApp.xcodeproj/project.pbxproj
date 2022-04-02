@@ -18,7 +18,7 @@
 		235F4AE327F75FC000CBF5CE /* BeerAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F4AE227F75FC000CBF5CE /* BeerAppUITests.swift */; };
 		235F4AE527F75FC000CBF5CE /* BeerAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F4AE427F75FC000CBF5CE /* BeerAppUITestsLaunchTests.swift */; };
 		235F4AF227F7646400CBF5CE /* OffersView.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F4AF127F7646400CBF5CE /* OffersView.swift.swift */; };
-		235F4AF427F795FD00CBF5CE /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F4AF327F795FD00CBF5CE /* Beer.swift */; };
+		235F4AF427F795FD00CBF5CE /* BeerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F4AF327F795FD00CBF5CE /* BeerModel.swift */; };
 		235F4AF627F79D3C00CBF5CE /* BeerTableViewCell.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F4AF527F79D3C00CBF5CE /* BeerTableViewCell.swift.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +55,7 @@
 		235F4AE227F75FC000CBF5CE /* BeerAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerAppUITests.swift; sourceTree = "<group>"; };
 		235F4AE427F75FC000CBF5CE /* BeerAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		235F4AF127F7646400CBF5CE /* OffersView.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersView.swift.swift; sourceTree = "<group>"; };
-		235F4AF327F795FD00CBF5CE /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
+		235F4AF327F795FD00CBF5CE /* BeerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerModel.swift; sourceTree = "<group>"; };
 		235F4AF527F79D3C00CBF5CE /* BeerTableViewCell.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewCell.swift.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,7 +111,7 @@
 				235F4AC027F75FBE00CBF5CE /* SceneDelegate.swift */,
 				235F4AC227F75FBE00CBF5CE /* ViewController.swift */,
 				235F4AF527F79D3C00CBF5CE /* BeerTableViewCell.swift.swift */,
-				235F4AF327F795FD00CBF5CE /* Beer.swift */,
+				235F4AF327F795FD00CBF5CE /* BeerModel.swift */,
 				235F4AF127F7646400CBF5CE /* OffersView.swift.swift */,
 				235F4AC427F75FBE00CBF5CE /* Main.storyboard */,
 				235F4ACA27F75FC000CBF5CE /* Assets.xcassets */,
@@ -271,7 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				235F4AC327F75FBE00CBF5CE /* ViewController.swift in Sources */,
-				235F4AF427F795FD00CBF5CE /* Beer.swift in Sources */,
+				235F4AF427F795FD00CBF5CE /* BeerModel.swift in Sources */,
 				235F4AF227F7646400CBF5CE /* OffersView.swift.swift in Sources */,
 				235F4AF627F79D3C00CBF5CE /* BeerTableViewCell.swift.swift in Sources */,
 				235F4ABF27F75FBE00CBF5CE /* AppDelegate.swift in Sources */,
