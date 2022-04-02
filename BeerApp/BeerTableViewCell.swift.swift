@@ -118,6 +118,14 @@ class BeerTableViewCell: UITableViewCell {
         guard model != nil else { return }
         self.delegate?.moreInfoTapped(with: model!)
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        beerImageView.image = nil
+        titleLabel.text = nil
+        taglineLabel.text = nil
+        descriptionLabel.text = nil
+    }
 }
 
 extension UIImageView {

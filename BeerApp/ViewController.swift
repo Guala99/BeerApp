@@ -138,6 +138,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: beerCellidentifier) as? BeerTableViewCell else { return UITableViewCell()}
         cell.configureCellWith(model: beersModel[indexPath.item])
+        cell.delegate = self
         return cell
     }
     
@@ -199,3 +200,8 @@ extension ViewController: UISearchBarDelegate {
     }
 }
 
+extension ViewController: BeerTableViewCellDelegate {
+    func moreInfoTapped(with model: BeerModel) {
+        print(model.name)
+    }
+}
