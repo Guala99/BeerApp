@@ -88,7 +88,7 @@ class DetailViewSlider : UIView {
         titleLabel.topAnchor.constraint(equalTo: beerImageView.topAnchor).isActive = true
         titleLabel.heightAnchor.constraint(equalTo: beerImageView.heightAnchor, multiplier: 0.2).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: beerImageView.trailingAnchor, constant: 10).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: flagImageView.leadingAnchor).isActive = true
         
         addSubview(taglineLabel)
         taglineLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
