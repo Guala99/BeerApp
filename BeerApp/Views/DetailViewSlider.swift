@@ -25,7 +25,6 @@ class DetailViewSlider : UIView {
     let titleLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Title Label"
         label.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         label.textColor = .white
         return label
@@ -35,7 +34,6 @@ class DetailViewSlider : UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.text = "Tagline"
         label.textColor = .lightGray
         return label
     }()
@@ -43,7 +41,6 @@ class DetailViewSlider : UIView {
     let descriptionLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Description"
         label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         label.numberOfLines = 0
         label.textColor = .lightGray
