@@ -13,6 +13,8 @@ protocol BeerTableViewCellDelegate: AnyObject {
 
 class BeerTableViewCell: UITableViewCell {
     
+    // MARK: - Instantiation of variables
+    
     let beerImageView : UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -106,9 +108,11 @@ class BeerTableViewCell: UITableViewCell {
         
     }
     
+    //MARK: - Configuration of
+    
     func configureCellWith(model: BeerModel) {
         self.model = model
-        beerImageView.setUpImageView(with: model.image_url)
+        configureImageViewFromURL(string: model.image_url)
         titleLabel.text = model.name
         taglineLabel.text = model.tagline
         descriptionLabel.text = model.description
@@ -126,20 +130,19 @@ class BeerTableViewCell: UITableViewCell {
         taglineLabel.text = nil
         descriptionLabel.text = nil
     }
-}
-
-extension UIImageView {
     
-    func setUpImageView(with stringUrl: String) {
-        if let url = URL(string: stringUrl) {
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-                guard let data = data, error == nil else { return }
+    /* Images are loaded asynchronously so if the cell is reused before the image is downloaded from the server it could end up with a wrong image -> to solve this problem I check that the response url that comes asynchronously is the same one of the model of the cell. */
+    func configureImageViewFromURL(string: String) {
+        guard model != nil else { return }
+        if let url = URL(string: string) {
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                guard response != nil, data != nil else { return }
                 DispatchQueue.main.async {
-                    self.image = UIImage(data: data)
+                    if self.model!.image_url == response!.url!.absoluteString {
+                        self.beerImageView.image = UIImage(data: data!)
+                    }
                 }
-            }
-            task.resume()
+            }.resume()
         }
     }
-    
 }

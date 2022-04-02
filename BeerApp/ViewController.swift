@@ -31,12 +31,12 @@ class ViewController: UIViewController {
     
     let offerView = OffersView()
     
-    let typeBeerView : UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemPink
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    //let typeBeerView : UIView = {
+    //    let view = UIView()
+    //    view.backgroundColor = .systemPink
+    //    view.translatesAutoresizingMaskIntoConstraints = false
+    //    return view
+    //}()
     
     let beerCellidentifier = "beerIdentifier"
     
@@ -94,14 +94,14 @@ class ViewController: UIViewController {
         offerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
         offerView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
-        view.addSubview(typeBeerView)
-        typeBeerView.topAnchor.constraint(equalTo: offerView.bottomAnchor, constant: 5).isActive = true
-        typeBeerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        typeBeerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        typeBeerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        //view.addSubview(typeBeerView)
+        //typeBeerView.topAnchor.constraint(equalTo: offerView.bottomAnchor, constant: 5).isActive //= true
+        //typeBeerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        //typeBeerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        //typeBeerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         view.addSubview(tableView)
-        tableView.topAnchor.constraint(equalTo: typeBeerView.bottomAnchor, constant: 5).isActive = true
+        tableView.topAnchor.constraint(equalTo: offerView.bottomAnchor, constant: 5).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
