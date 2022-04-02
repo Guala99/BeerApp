@@ -74,6 +74,8 @@ class BeerTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Setting up the ui using AutoLayout
+    
     private func setUpUI() {
         backgroundColor = .clear
         
@@ -108,14 +110,14 @@ class BeerTableViewCell: UITableViewCell {
         
     }
     
-    //MARK: - Configuration of
+    //MARK: - Configuration of cell
     
     func configureCellWith(model: BeerModel) {
         self.model = model
-        configureImageViewFromURL(string: model.image_url)
         titleLabel.text = model.name
         taglineLabel.text = model.tagline
         descriptionLabel.text = model.description
+        configureImageViewFromURL(string: model.image_url)
     }
     
     @objc private func handleMoreTapped() {
