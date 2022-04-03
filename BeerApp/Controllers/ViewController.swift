@@ -31,13 +31,6 @@ class ViewController: UIViewController {
     
     let offerView = OffersView()
     
-    //let typeBeerView : UIView = {
-    //    let view = UIView()
-    //    view.backgroundColor = .systemPink
-    //    view.translatesAutoresizingMaskIntoConstraints = false
-    //    return view
-    //}()
-    
     let beerCellidentifier = "beerIdentifier"
     
     let rootURL = "https://api.punkapi.com/v2/beers"
@@ -93,12 +86,6 @@ class ViewController: UIViewController {
         offerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
         offerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
         offerView.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        
-        //view.addSubview(typeBeerView)
-        //typeBeerView.topAnchor.constraint(equalTo: offerView.bottomAnchor, constant: 5).isActive //= true
-        //typeBeerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        //typeBeerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        //typeBeerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         view.addSubview(tableView)
         tableView.topAnchor.constraint(equalTo: offerView.bottomAnchor, constant: 5).isActive = true
