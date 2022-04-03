@@ -9,6 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let beerCellidentifier = "beerIdentifier"
+    
+    let rootURL = "https://api.punkapi.com/v2/beers"
+    
     let titleLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -30,10 +34,6 @@ class ViewController: UIViewController {
     }()
     
     let offerView = OffersView()
-    
-    let beerCellidentifier = "beerIdentifier"
-    
-    let rootURL = "https://api.punkapi.com/v2/beers"
     
     lazy var tableView : UITableView = {
         let tableView = UITableView(frame: .zero)
